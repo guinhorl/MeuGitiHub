@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    button {
+      margin-left: 70px;
+    }
+
+    input {
+      margin-left: 15px;
+    }
+
+    table {
+      background-color: burlywood;
+    }
+  </style>
+
+  <script>
+    var velocPermitida = "";
+    var velociMotorista = "";      
+
+    function calcular() {      
+      velocPermitida  = parseInt(document.velocMx.veloPerm.value);
+      velociMotorista = parseInt(document.velocMx.veloMoto.value);
+      //let teste = "";
+      let dez  = (velocPermitida * 10) / 100;
+      let onze = (velocPermitida * 11) / 100;
+      let trinta = (velocPermitida * 30) / 100;      
+
+      if((velociMotorista > (velocPermitida + dez)) && (velociMotorista <= (velocPermitida + onze))){
+        alert("Sua multa é de R$ 50,00");
+      }else if((velociMotorista > (velocPermitida + onze)) && (velociMotorista <= (velocPermitida + trinta))){
+        alert("Sua multa é de R$ 100,00");
+      }else if(velociMotorista > (velocPermitida + trinta)){
+        alert("Sua multa é de R$ 200,00");
+      }else{
+        alert("BOA VIAGEM!");
+      }            
+    }
+  </script>
+
+  <title>Velocidade Máxima</title>
+</head>
+
+<body>
+  <center>
+    <form name="velocMx" action="velocidadeMaxima.html" method="post">
+      <table border="5">
+        <tr>
+          <td colspan="2">
+            <h2>Valocidade Máxima</h2>
+          </td>
+        </tr>
+        <tr>
+          <td>Velocidade máxima permitida</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="veloPerm"></td>
+        </tr>
+        <tr>
+          <td>Velocidade do motorista</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="veloMoto"></td>
+        </tr>
+        <tr>
+          <td><button type="button" value="verificar" onclick="calcular()">Verificar</button></td>
+        </tr>
+      </table>
+    </form>
+  </center>
+</body>
+
+</html>
