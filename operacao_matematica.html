@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <!--Estilo-->
+   <style>
+      table {
+         background-color: aqua;
+      }
+   </style>
+   <!--FIM Estilo-->
+   <!--JavaScript-->
+   <script>
+      var valor1 = "";
+      var valor2 = "";
+      var opSel = "";
+
+
+      function resultado() {
+         let resul = "";
+         valor1 = document.calcForm.n1.value;
+         valor2 = document.calcForm.n2.value;
+         let e = document.getElementById("operador");
+         opSel = e.options[e.selectedIndex].value;
+
+         if ((valor1 == "") || (valor2 == "") || (opSel == "")) {//Aqui ele verifica se alguma campo está vazio
+            alert("Algum campo esta vazio!");
+         } else if((valor1 != isNaN) && (valor2 != isNaN) && (opSel == "")) {
+            alert("Algum campo esta vazio!");
+         }else{
+            //se não ele executa a operação 
+            switch (opSel) {
+               case 'soma':
+                  resul = (parseFloat(valor1) + parseFloat(valor2));
+                  document.calcForm.displayResult.value = valor1 + " + " + valor2 + " = " + resul;
+                  break;
+               case 'subt':
+                  resul = (parseFloat(valor1) - parseFloat(valor2));
+                  document.calcForm.displayResult.value = valor1 + " - " + valor2 + " = " + resul;;
+                  break;
+               case 'mult':
+                  resul = (parseFloat(valor1) * parseFloat(valor2));
+                  document.calcForm.displayResult.value = valor1 + " x " + valor2 + " = " + resul;;
+                  break;
+               case 'divi':
+                  resul = (parseFloat(valor1) / parseFloat(valor2));
+                  document.calcForm.displayResult.value = valor1 + " / " + valor2 + " = " + resul;
+                  break;
+               default:
+                  document.calcForm.displayResult.value = "ERRO FATAL!";
+            }
+         }
+      }
+
+   </script>
+   <!--FIM JavaScript-->
+   <title>Operação Matemática</title>
+</head>
+
+<body>
+   <div>
+      <table>
+         <form name="calcForm" action="operacao_matematica.html" method="post">
+            <tr>
+               <td colspan="2">
+                  <h2>
+                     <center>Operação Matemática</center>
+                  </h2>
+               </td>
+            </tr>
+            <tr>
+               <td>Número 1:</td>
+               <td><input type="text" name="n1" required></td>
+            </tr>
+            <tr>
+               <td colspan="2"><select id="operador">
+                     <option value="" selected></option>
+                     <option value="soma">+</option>
+                     <option value="subt">-</option>
+                     <option value="mult">x</option>
+                     <option value="divi">/</option>
+                  </select></td>
+            </tr>
+            <tr>
+               <td>Número 2:</td>
+               <td><input type="text" name="n2" required></td>
+            </tr>
+            <tr>
+               <td>Resultado:</td>
+               <td><input type="text" name="displayResult"></td>
+            </tr>
+            <tr>
+               <td colspan="2"><button type="button" value="Calcular" onclick="resultado()">Calcular</button></td>
+            </tr>
+         </form>
+      </table>
+   </div>
+</body>
+
+</html>
